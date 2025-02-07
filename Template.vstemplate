@@ -1,0 +1,40 @@
+﻿<VSTemplate Version="1.0.0" Type="Project">
+	<TemplateData>
+		<Name>Azure AD SSO Backend Template</Name>
+		<Description>EF Core Code-First backend with Azure AD SSO and SQL Server.</Description>
+		<ProjectType>CSharp</ProjectType>
+	</TemplateData>
+	<TemplateContent>
+		<Project TargetFileName="SSO-Auth.csproj" File="SSO-Auth.csproj" ReplaceParameters="true">
+			<Folder Name="Models" TargetFolderName="Models" />
+			<Folder Name="Context" TargetFolderName="Context" />
+			<Folder Name="Endpoints" TargetFolderName="Endpoints" />
+			<Folder Name="Middlewares" TargetFolderName="Middlewares" />
+			<Folder Name="Result" TargetFolderName="Result" />
+			<Folder Name="Services" TargetFolderName="Services" />
+			<Folder Name="Utilities" TargetFolderName="Utilities" />
+			<ProjectItem>Program.cs</ProjectItem>
+			<ProjectItem>appsettings.json</ProjectItem>
+			<ProjectItem>SSO-Auth.csproj</ProjectItem>
+			<Exclude>bin\</Exclude>
+			<Exclude>.vscode\</Exclude>
+			<Exclude>obj\</Exclude>
+			<Exclude>.vs\</Exclude>
+		</Project>
+	</TemplateContent>
+	<WizardExtension>
+		<Assembly>NuGet.VisualStudio.TemplateWizard, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+		<FullClassName>NuGet.VisualStudio.TemplateWizard.PackageInstallerWizard</FullClassName>
+	</WizardExtension>
+	<CustomParameters>
+		<CustomParameter Name="$AzureTenantId$" Value="AzureTenantId"/>
+		<CustomParameter Name="$AzureClientId$" Value="AzureClientId"/>
+		<CustomParameter Name="$AzureDomain$" Value="AzureDomain"/>
+		<CustomParameter Name="$AzureClientAppName$" Value="AzureClientAppName"/>
+		<CustomParameter Name="$AzureClientSecret$" Value="AzureClientSecret"/>
+		<CustomParameter Name="$AzureInviteRedirectUrl$" Value="AzureInviteRedirectUrl"/>
+		<CustomParameter Name="$AzureMasterClientId$" Value="AzureClientId"/>
+		<CustomParameter Name="$AzureMasterClientSecret$" Value="AzureMasterClientSecret"/>
+		<CustomParameter Name="$SqlServerDB$" Value="SqlServerConnectionString"/>
+	</CustomParameters>
+</VSTemplate>
