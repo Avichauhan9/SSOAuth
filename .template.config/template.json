@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Avi Chauhan",
+  "classifications": [ "Web", "Azure", "EF Core" ],
+  "identity": "Your.Template.Identifier",
+  "name": "Azure AD Backend Template",
+  "shortName": "azure-ad-backend",
+  "sourceName": "SSO-Auth",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "symbols": {
+    "AzureTenantId": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__AzureTenantId__",
+      "description": "Azure AD Tenant ID"
+    },
+    "AzureClientId": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__AzureClientId__",
+      "description": "Azure AD Client ID"
+    },
+    "AzureDomain": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__AzureDomain__",
+      "description": "Azure Domain"
+    },
+    "AzureClientAppName": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__AzureClientAppName__",
+      "description": "Azure AD Client App Name"
+    },
+    "AzureClientSecret": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__AzureClientSecret__",
+      "description": "Azure AD Client Secret"
+    },
+    "AzureInviteRedirectUrl": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__AzureInviteRedirectUrl__",
+      "description": "Azure Invite Redirect URL"
+    },
+    "AzureMasterClientId": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__AzureMasterClientId__",
+      "description": "Azure Master Client ID"
+    },
+    "AzureMasterClientSecret": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__AzureMasterClientSecret__",
+      "description": "Azure Master Client Secret"
+    },
+    "SqlServerDB": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__SqlServerDB__",
+      "description": "SQL Server connection string"
+    }
+  },
+  "primaryOutputs": [
+    {
+      "path": "./"
+    }
+  ]
+}
