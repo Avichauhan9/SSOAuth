@@ -8,14 +8,14 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace SSO_Backend.Endpoints.Users;
 
 
-public class GetAllUser(IManageUserService manageUserService) : EndpointBaseAsync
+public class GetAllUsers(IManageUserService manageUserService) : EndpointBaseAsync
  .WithRequest<bool?>
  .WithActionResult<UserDTO>
 {
     private readonly IManageUserService _manageUserService = manageUserService;
 
     [HttpGet("users")]
-    [SwaggerOperation(Summary = "Get all users", Description = "", OperationId = "Users.GetAllUser", Tags = new[] { "Users" }
+    [SwaggerOperation(Summary = "Get all users", Description = "", OperationId = "Users.GetAllUser", Tags = ["Users"]
   )]
     public override async Task<ActionResult<UserDTO>> HandleAsync([FromQuery] bool? IsActive, CancellationToken cancellationToken = default)
     {

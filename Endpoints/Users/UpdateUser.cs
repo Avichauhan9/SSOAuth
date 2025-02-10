@@ -14,7 +14,7 @@ public class UpdateUser(IManageUserService manageUserService) : EndpointBaseAsyn
     private readonly IManageUserService _manageUserService = manageUserService;
 
     [HttpPut("users/update")]
-    [SwaggerOperation(Summary = "Update user information", Description = "", OperationId = "Users.UpdateUser", Tags = new[] { "Users" }
+    [SwaggerOperation(Summary = "Update user information", Description = "", OperationId = "Users.UpdateUser", Tags = ["Users"]
   )]
     public override async Task<ActionResult<UserDTO>> HandleAsync([FromBody] UpdateUserDTO updateUserRequest, CancellationToken cancellationToken = default)
     {

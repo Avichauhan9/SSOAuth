@@ -1,5 +1,6 @@
 
 using AutoMapper;
+using SSO_Backend.Endpoints.Roles.DTO;
 using SSO_Backend.Endpoints.Users.DTO;
 using SSO_Backend.Models;
 

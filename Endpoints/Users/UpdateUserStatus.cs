@@ -14,7 +14,7 @@ public class UpdateUserStatus(IManageUserService manageUserService) : EndpointBa
     private readonly IManageUserService _manageUserService = manageUserService;
 
     [HttpPatch("users/update-status")]
-    [SwaggerOperation(Summary = "Update user status", Description = "", OperationId = "Users.UpdateUserStatus", Tags = new[] { "Users" }
+    [SwaggerOperation(Summary = "Update user status", Description = "", OperationId = "Users.UpdateUserStatus", Tags = ["Users"]
   )]
     public override async Task<ActionResult<UserDTO>> HandleAsync([FromBody] UpdateUserStatusDTO changeRequest, CancellationToken cancellationToken = default)
     {

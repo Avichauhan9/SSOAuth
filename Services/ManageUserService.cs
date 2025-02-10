@@ -61,8 +61,10 @@ public class ManageUserService(AppDBContext iamDbConext, IGraphService graphServ
     {
 
         var existingUser = await _context.Users.SingleOrDefaultAsync(u => u.Id == changeStatusRequest.Id);
-        if (existingUser == null || string.IsNullOrWhiteSpace(existingUser.AzureADUserId))
+        if (existingUser == null)
             return Result<int>.Invalid([new ValidationError { Key = "User", ErrorMessage = $"User is not found." }]);
+        else if(string.IsNullOrWhiteSpace(existingUser.AzureADUserId))
+            return Result<int>.Invalid([new ValidationError { Key = "User", ErrorMessage = $"User registration is malicious" }]);
 
         await _graphService.DisabledUser(existingUser.AzureADUserId, changeStatusRequest.AccountEnabled);
         existingUser.IsActive = changeStatusRequest.AccountEnabled;

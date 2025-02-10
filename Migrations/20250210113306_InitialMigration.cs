@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SSO_Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreation : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -72,7 +72,6 @@ namespace SSO_Backend.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsServicePrincipal = table.Column<bool>(type: "bit", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "SYSUTCDATETIME()"),
                     CreatedById = table.Column<int>(type: "int", nullable: true),
                     LastUpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "SYSUTCDATETIME()"),
@@ -100,8 +99,8 @@ namespace SSO_Backend.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsServicePrincipal = table.Column<bool>(type: "bit", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "SYSUTCDATETIME()"),
                     CreatedById = table.Column<int>(type: "int", nullable: true),
                     LastUpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "SYSUTCDATETIME()"),
@@ -205,7 +204,7 @@ namespace SSO_Backend.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AzureADUserId", "CreatedAt", "CreatedById", "Email", "FirstName", "IsActive", "IsServicePrincipal", "LastName", "UpdatedById" },
-                values: new object[] { 1, null, new DateTimeOffset(new DateTime(2025, 2, 7, 8, 39, 59, 636, DateTimeKind.Unspecified).AddTicks(11), new TimeSpan(0, 0, 0, 0, 0)), null, "admin@example.com", "Admin", true, false, "User", null });
+                values: new object[] { 1, null, new DateTimeOffset(new DateTime(2025, 2, 10, 11, 33, 5, 453, DateTimeKind.Unspecified).AddTicks(8438), new TimeSpan(0, 0, 0, 0, 0)), null, "admin@example.com", "Admin", true, false, "User", null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Permissions_CreatedById",

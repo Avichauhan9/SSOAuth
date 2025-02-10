@@ -15,7 +15,7 @@ public class GetById(IManageUserService manageUserService) : EndpointBaseAsync
     private readonly IManageUserService _manageUserService = manageUserService;
 
     [HttpGet("users/{id}")]
-    [SwaggerOperation(Summary = "Get user by id", Description = "", OperationId = "Users.GetById", Tags = new[] { "Users" }
+    [SwaggerOperation(Summary = "Get user by id", Description = "", OperationId = "Users.GetById", Tags = ["Users"]
   )]
     public override async Task<ActionResult<UserDTO>> HandleAsync(int id, CancellationToken cancellationToken = default)
     {

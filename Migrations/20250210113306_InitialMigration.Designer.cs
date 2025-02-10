@@ -12,8 +12,8 @@ using SSO_Backend.Context;
 namespace SSO_Backend.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250207084000_InitialCreation")]
-    partial class InitialCreation
+    [Migration("20250210113306_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,9 +89,6 @@ namespace SSO_Backend.Migrations
                     b.Property<int?>("CreatedById")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("IsServicePrincipal")
                         .HasColumnType("bit");
 
@@ -132,8 +129,8 @@ namespace SSO_Backend.Migrations
                     b.Property<int?>("CreatedById")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsServicePrincipal")
                         .HasColumnType("bit");
@@ -258,13 +255,13 @@ namespace SSO_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 2, 7, 8, 39, 59, 636, DateTimeKind.Unspecified).AddTicks(11), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 2, 10, 11, 33, 5, 453, DateTimeKind.Unspecified).AddTicks(8438), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "admin@example.com",
                             FirstName = "Admin",
                             IsActive = true,
                             IsServicePrincipal = false,
                             LastName = "User",
-                            LastUpdatedAt = new DateTimeOffset(new DateTime(2025, 2, 7, 8, 39, 59, 636, DateTimeKind.Unspecified).AddTicks(15), new TimeSpan(0, 0, 0, 0, 0))
+                            LastUpdatedAt = new DateTimeOffset(new DateTime(2025, 2, 10, 11, 33, 5, 453, DateTimeKind.Unspecified).AddTicks(8442), new TimeSpan(0, 0, 0, 0, 0))
                         });
                 });
 

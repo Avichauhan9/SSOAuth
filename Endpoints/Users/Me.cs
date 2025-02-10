@@ -16,7 +16,7 @@ public class Me(IManageUserService manageUserService) : EndpointBaseAsync
   private readonly IManageUserService _manageUserService = manageUserService;
 
   [HttpGet("users/me")]
-  [SwaggerOperation(Summary = "Get information of current user", Description = "", OperationId = "Users.Me", Tags = new[] { "Users" }
+  [SwaggerOperation(Summary = "Get information of current user", Description = "", OperationId = "Users.Me", Tags = ["Users"]
 )]
   public override async Task<ActionResult<UserDTO>> HandleAsync(CancellationToken cancellationToken = default)
   {

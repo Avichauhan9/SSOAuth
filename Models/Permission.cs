@@ -12,7 +12,5 @@ public class Permission : BaseModel
 
     public bool IsServicePrincipal { get; set; }
 
-    public bool IsActive { get; set; }
-
     public virtual ICollection<RolePermission> RolePermissions { get; set; } = [];
 }

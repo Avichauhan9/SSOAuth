@@ -14,7 +14,7 @@ public class CreateUser(IManageUserService manageUserService) : EndpointBaseAsyn
     private readonly IManageUserService _manageUserService = manageUserService;
 
     [HttpPost("users/create")]
-    [SwaggerOperation(Summary = "Create new user", Description = "", OperationId = "Users.Create", Tags = new[] { "Users" }
+    [SwaggerOperation(Summary = "Create new user", Description = "", OperationId = "Users.Create", Tags = ["Users"]
   )]
     public override async Task<ActionResult<UserDTO>> HandleAsync(CreateUserDTO userRequest, CancellationToken cancellationToken = default)
     {
