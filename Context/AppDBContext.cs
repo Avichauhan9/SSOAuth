@@ -80,12 +80,22 @@ namespace SSO_Backend.Context
                 LastName = "User",
                 Email = "admin@example.com",
                 IsActive = true,
+                IsServicePrincipal = false,
                 CreatedById = null,
                 UpdatedById = null
             };
 
-            
+            var NotificationTemplate = new NotificationTemplate
+            {
+                Id = 1,
+                Name = "Invite User",
+                Subject = "SSO App invited you to access {{AppName}} applications",
+                Body = "<style> .rps_d108 .x_auto-style40 { border-color: #000000; border-width: 0px; } </style>  <p>Hello {{DisplayName}},</p>  <p>You have been invited to join our {{AppName}}!</p>  <table class=\"x_auto-style40\" bgcolor=\"#F4F4F4\" width=\"700\" align=\"center\" role=\"presentation\" >   <tbody>    <tr aria-hidden=\"true\">     <td class=\"x_auto-style22\" colspan=\"6\"></td>    </tr>    <tr aria-hidden=\"true\">     <td class=\"x_auto-style22\" colspan=\"6\"></td>    </tr>    <tr></tr>    <tr>     <td align=\"center\" class=\"x_auto-style12\" colspan=\"6\" style=\"height: 10px\" > If you visit this invitation, you’ll be redirected to       <a href=\"{{InviteLink}}\" target=\"_blank\" rel=\"noopener noreferrer\" data-auth=\"NotApplicable\" data-linkindex=\"0\" >{{InviteLink}}</a >.      </td>    </tr>    <tr aria-hidden=\"true\">     <td class=\"x_auto-style22\" colspan=\"6\" style=\"height: 10px\"></td>    </tr>    <tr>     <td colspan=\"6\" align=\"center\" style=\"padding-top: 5px; padding-bottom: 5px; text-align: center\" >      <a href=\"{{InviteLink}}\" target=\"_blank\" rel=\"noopener noreferrer\" data-auth=\"NotApplicable\"  data-linkindex=\"1\"       style=\"display: inline-block; background-color: #4C66AF; color: white; padding: 10px 20px; text-align: center; text-decoration: none; border-radius: 5px; border: none; cursor: pointer;\" >Visit now </a>      <p>We're excited to have you on board. If you have any questions, feel free to reach out <a href=\"mailto:support@outamatemods.com\">SSO Administrator</a></p>     </td>    </tr>    <tr aria-hidden=\"true\">     <td colspan=\"6\" class=\"x_auto-style22\"></td>    </tr>    <tr aria-hidden=\"true\">     <td colspan=\"6\" class=\"x_auto-style22\"></td>    </tr>   </tbody>  </table>  <p>Best regards,   <br>SSO  Team.   </p>",
+                IsBodyHtml = true,
+            };
+
             modelBuilder.Entity<Models.User>().HasData(adminUser);
+            modelBuilder.Entity<NotificationTemplate>().HasData(NotificationTemplate);
         }
 
         public override int SaveChanges()
