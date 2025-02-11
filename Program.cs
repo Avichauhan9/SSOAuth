@@ -26,7 +26,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(s =>
 {
-    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Auth.API", Version = "v1" });
+    s.SwaggerDoc("v1", new OpenApiInfo { Title = "SSO Auth Management", Version = "v1" });
     s.EnableAnnotations();
     // add JWT Authentication
     var securityScheme = new OpenApiSecurityScheme
