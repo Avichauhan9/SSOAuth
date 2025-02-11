@@ -12,7 +12,7 @@ using User = SSO_Backend.Models.User;
 
 namespace SSO_Backend.Services;
 
-public class ManageUserService(AppDBContext iamDbConext, IGraphService graphService, IMapper mapper, IEmailService emailServices, IOptions<AzureADConfig> azureADConfig, UserInfo user) : BaseService(iamDbConext, user), IManageUserService
+public class ManageUserService(AppDBContext DBContext, IGraphService graphService, IMapper mapper, IEmailService emailServices, IOptions<AzureADConfig> azureADConfig, UserInfo user) : BaseService(DBContext, user), IManageUserService
 {
     private readonly IGraphService _graphService = graphService;
     private readonly IMapper _mapper = mapper;

@@ -5,10 +5,10 @@ namespace SSO_Backend.Endpoints.Roles.DTO
     public class CreateRoleDTO
     {
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Name { get; set; }
 
-        [StringLength(100)]
+        [StringLength(1000)]
         public string Description { get; set; }
 
         public bool IsServicePrincipal { get; set; } = false;

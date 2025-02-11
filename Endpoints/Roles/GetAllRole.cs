@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace SSO_Backend.Endpoints.Roles;
 
-public class GetAllRole(IManageRoleService manageRoleService) : EndpointBaseAsync
+public class GetAllPermission(IManageRoleService manageRoleService) : EndpointBaseAsync
  .WithoutRequest
  .WithActionResult<AllRolesDTO>
 {

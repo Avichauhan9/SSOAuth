@@ -57,8 +57,11 @@ builder.Services.AddScoped<UserInfo, CurrentUser>();
 
 builder.Services.AddTransient<IGraphService, GraphService>();
 builder.Services.AddTransient<IEmailService, EmailService>();
+
 builder.Services.AddTransient<IManageUserService, ManageUserService>();
 builder.Services.AddTransient<IManageRoleService, ManageRoleService>();
+builder.Services.AddTransient<IManagePermissionService, ManagePermissionService>();
+
 
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers(options =>

@@ -22,7 +22,7 @@ public class MapperProfile : Profile
                 })
                 .ToList()
             : new List<PermissionDTO>() // Handle null case
-        )
+             )
           );
         CreateMap<Role, AllRolesDTO>();
         CreateMap<CreateRoleDTO, Role>();

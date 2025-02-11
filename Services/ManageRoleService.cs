@@ -9,7 +9,7 @@ using SSO_Backend.Result;
 
 namespace SSO_Backend.Services;
 
-public class ManageRoleService(AppDBContext iamDbConext, IMapper mapper, UserInfo user) : BaseService(iamDbConext, user), IManageRoleService
+public class ManageRoleService(AppDBContext DBContext, IMapper mapper, UserInfo user) : BaseService(DBContext, user), IManageRoleService
 {
     private readonly IMapper _mapper = mapper;
     public async Task<Result<IEnumerable<AllRolesDTO>>> GetRoles()

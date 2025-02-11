@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SSO_Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -69,8 +69,8 @@ namespace SSO_Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     IsServicePrincipal = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "SYSUTCDATETIME()"),
                     CreatedById = table.Column<int>(type: "int", nullable: true),
@@ -98,8 +98,8 @@ namespace SSO_Backend.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     IsServicePrincipal = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false, defaultValueSql: "SYSUTCDATETIME()"),
                     CreatedById = table.Column<int>(type: "int", nullable: true),
@@ -204,7 +204,7 @@ namespace SSO_Backend.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AzureADUserId", "CreatedAt", "CreatedById", "Email", "FirstName", "IsActive", "IsServicePrincipal", "LastName", "UpdatedById" },
-                values: new object[] { 1, null, new DateTimeOffset(new DateTime(2025, 2, 10, 11, 33, 5, 453, DateTimeKind.Unspecified).AddTicks(8438), new TimeSpan(0, 0, 0, 0, 0)), null, "admin@example.com", "Admin", true, false, "User", null });
+                values: new object[] { 1, null, new DateTimeOffset(new DateTime(2025, 2, 11, 10, 36, 49, 546, DateTimeKind.Unspecified).AddTicks(3034), new TimeSpan(0, 0, 0, 0, 0)), null, "admin@example.com", "Admin", true, false, "User", null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Permissions_CreatedById",
@@ -227,9 +227,10 @@ namespace SSO_Backend.Migrations
                 column: "PermissionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RolePermissions_RoleId",
+                name: "IX_RolePermissions_RoleId_PermissionId",
                 table: "RolePermissions",
-                column: "RoleId");
+                columns: new[] { "RoleId", "PermissionId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_RolePermissions_UpdatedById",
@@ -262,9 +263,10 @@ namespace SSO_Backend.Migrations
                 column: "UpdatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserRoles_UserId",
+                name: "IX_UserRoles_UserId_RoleId",
                 table: "UserRoles",
-                column: "UserId");
+                columns: new[] { "UserId", "RoleId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_CreatedById",

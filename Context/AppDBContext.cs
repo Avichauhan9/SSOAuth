@@ -24,7 +24,6 @@ namespace SSO_Backend.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configure common audit properties for BaseModel entities
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
                 .Where(e => typeof(BaseModel).IsAssignableFrom(e.ClrType)))
             {
@@ -39,6 +38,14 @@ namespace SSO_Backend.Context
                         .ValueGeneratedOnAddOrUpdate();
                 });
             }
+
+            modelBuilder.Entity<UserRole>()
+              .HasIndex(ur => new { ur.UserId, ur.RoleId })
+              .IsUnique();
+
+            modelBuilder.Entity<Models.RolePermission>()
+              .HasIndex(ur => new { ur.RoleId, ur.PermissionId })
+              .IsUnique();
 
             ConfigureRelationships(modelBuilder);
             SeedInitialData(modelBuilder);

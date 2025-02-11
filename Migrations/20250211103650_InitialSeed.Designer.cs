@@ -12,8 +12,8 @@ using SSO_Backend.Context;
 namespace SSO_Backend.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20250210113306_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250211103650_InitialSeed")]
+    partial class InitialSeed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,7 +79,8 @@ namespace SSO_Backend.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -99,7 +100,8 @@ namespace SSO_Backend.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("UpdatedById")
                         .HasColumnType("int");
@@ -130,7 +132,8 @@ namespace SSO_Backend.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<bool>("IsServicePrincipal")
                         .HasColumnType("bit");
@@ -142,7 +145,8 @@ namespace SSO_Backend.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("UpdatedById")
                         .HasColumnType("int");
@@ -192,9 +196,10 @@ namespace SSO_Backend.Migrations
 
                     b.HasIndex("PermissionId");
 
-                    b.HasIndex("RoleId");
-
                     b.HasIndex("UpdatedById");
+
+                    b.HasIndex("RoleId", "PermissionId")
+                        .IsUnique();
 
                     b.ToTable("RolePermissions");
                 });
@@ -255,13 +260,13 @@ namespace SSO_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 2, 10, 11, 33, 5, 453, DateTimeKind.Unspecified).AddTicks(8438), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 2, 11, 10, 36, 49, 546, DateTimeKind.Unspecified).AddTicks(3034), new TimeSpan(0, 0, 0, 0, 0)),
                             Email = "admin@example.com",
                             FirstName = "Admin",
                             IsActive = true,
                             IsServicePrincipal = false,
                             LastName = "User",
-                            LastUpdatedAt = new DateTimeOffset(new DateTime(2025, 2, 10, 11, 33, 5, 453, DateTimeKind.Unspecified).AddTicks(8442), new TimeSpan(0, 0, 0, 0, 0))
+                            LastUpdatedAt = new DateTimeOffset(new DateTime(2025, 2, 11, 10, 36, 49, 546, DateTimeKind.Unspecified).AddTicks(3036), new TimeSpan(0, 0, 0, 0, 0))
                         });
                 });
 
@@ -303,7 +308,8 @@ namespace SSO_Backend.Migrations
 
                     b.HasIndex("UpdatedById");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId", "RoleId")
+                        .IsUnique();
 
                     b.ToTable("UserRoles");
                 });
